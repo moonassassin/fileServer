@@ -1,0 +1,3 @@
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:prod_primary

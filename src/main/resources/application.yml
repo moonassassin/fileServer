@@ -1,0 +1,65 @@
+server:
+  port: @server.port@
+  tomcat: 
+    basedir: .
+    accesslog:
+      enabled: true
+      pattern: "%t %a \"%r\" %s (%D ms)"
+  
+spring:
+  application:
+    name: fileWebServer
+  aop:
+    auto: true # Add @EnableAspectJAutoProxy. 
+    proxy-target-class: false # Whether subclass-based (CGLIB) proxies are to be created (true) as opposed to standard Java interface-based proxies (false).
+  datasource:
+    url: @db.url@
+    username: @db.username@
+    password: @db.password@
+    driver-class-name: @db.driver@
+  http:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+      location: @http.multipart.location@
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+  redis:
+    host: @redis.host@
+    password: 
+    port: 6379
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+      
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${random.int}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: @service.url@
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 300000
+
+endpoints:
+  cors:
+    allowed-origins: "*"
+    allowed-methods: GET,POST
+      
+fs:
+  dir: @fs.dir@
+  tmp.dir: @fs.tmp.dir@      
+
+spring.cloud.loadbalancer.retry.enabled: true
+ribbon.ReadTimeout: 60000
+ribbon.ConnectTimeout: 60000
+
+login.max.attempts: 3
+#unit hours
+login.cache.time: 12
