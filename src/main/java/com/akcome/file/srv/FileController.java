@@ -85,21 +85,21 @@ public class FileController extends AbstractWebController {
 	}
 
 	@RequestMapping(value = "/file/v1/{group}/download/{fileName}", method = { RequestMethod.GET })
-	public void downloadFileV2(HttpServletRequest request, HttpServletResponse response, @PathVariable String fileName,
+	public void downloadFileV1(HttpServletRequest request, HttpServletResponse response, @PathVariable String fileName,
 			@PathVariable String group) throws BusinessException {
 		// 通过注解获取fileName时无法获取后缀
 		String servletPath = request.getServletPath();
-		FileInfo fileInfo = FileClientUtil.parseFilePathV2(servletPath);
+		FileInfo fileInfo = FileClientUtil.parseFilePathV1(servletPath);
 		downloadFileV1Internal(response, group, fileInfo.getFileName(), null);
 	}
 
 	@RequestMapping(value = "/file/v1/{group}/download/{fileName}/{refName}", method = { RequestMethod.GET })
-	public void downloadFileV2WithRefName(HttpServletRequest request, HttpServletResponse response,
+	public void downloadFileV1WithRefName(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String fileName, @PathVariable String group, @PathVariable String refName)
 			throws BusinessException {
 		// 通过注解获取refName时无法获取后缀
 		String servletPath = request.getServletPath();
-		FileInfo fileInfo = FileClientUtil.parseFilePathV2(servletPath);
+		FileInfo fileInfo = FileClientUtil.parseFilePathV1(servletPath);
 		downloadFileV1Internal(response, group, fileName, fileInfo.getOrgName());
 	}
 
