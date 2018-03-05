@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.akcome.common.file.FileInfo;
+import com.akcome.common.request.in.FileInfo;
 import com.akcome.common.web.out.AjaxResult;
 
 @FeignClient(value = "fileWebServer", name = "fileWebServer")
