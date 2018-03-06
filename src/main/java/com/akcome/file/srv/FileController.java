@@ -40,7 +40,7 @@ public class FileController extends AbstractWebController {
 	@RequestMapping(value = "/file/v1/{group}/upload", method = { RequestMethod.POST })
 	@ResponseBody
 	public AjaxResult<String> uploadFile(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String group) throws BusinessException {
+			@PathVariable String group, @RequestParam(required = false) String schema) throws BusinessException {
 		AjaxResult<String> ret = AjaxResult.create(true);
 		Map<String, String> fileInfo = uploadFile0(request, response, group);
 		ret.setObj(FileClientUtil.constructFilePathV1(group, fileInfo.get("fileUrl"), fileInfo.get("fileName")));

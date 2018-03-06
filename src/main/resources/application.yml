@@ -53,6 +53,7 @@ endpoints:
     allowed-methods: GET,POST
       
 fs:
+  url: @fs.url@
   dir: @fs.dir@
   tmp.dir: @fs.tmp.dir@      
 
