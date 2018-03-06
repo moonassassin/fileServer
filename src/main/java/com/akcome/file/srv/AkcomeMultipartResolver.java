@@ -61,10 +61,15 @@ public class AkcomeMultipartResolver extends StandardServletMultipartResolver {
 		if (idx > -1) {
 			uri = uri.substring(0, idx);
 		}
-		if(uri.contains("v1")){
-			return uri.replaceAll("/file/v1/", "").replaceAll("/upload", "");
-		}else{
-			return uri.replaceAll("/file/v2/", "").replaceAll("/upload", "");
+		uri = uri.replaceAll("/file/", "").replaceAll("/upload", "");
+		// 下面的操作是将v1或者v2等后来增加的一级路径去除
+		idx = uri.indexOf("/");
+		if (idx <= -1) {
+			idx = 0;
+			logger.warn("upload file path is not like this:/file/***/***/upload");
+			return uri;
 		}
+		uri = uri.substring(idx + 1);
+		return uri;
 	}
 }
