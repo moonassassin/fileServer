@@ -45,8 +45,8 @@ public class FileController extends AbstractWebController {
 	public AjaxResult<String> uploadFile(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String group, @RequestParam(required = false) String schema) throws BusinessException {
 		AjaxResult<String> ret = AjaxResult.create(true);
-		// 请求模式只能是HTTP或者HTTPS两种方式，默认为HTTPS
-		if (!"https".equals(schema)) {
+		// 请求模式默认为HTTP
+		if (schema == null) {
 			schema = "http";
 		}
 		Map<String, String> fileInfo = uploadFile0(request, response, group);
