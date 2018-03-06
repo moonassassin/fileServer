@@ -61,6 +61,10 @@ public class AkcomeMultipartResolver extends StandardServletMultipartResolver {
 		if (idx > -1) {
 			uri = uri.substring(0, idx);
 		}
-		return uri.replaceAll("/file/v1/", "").replaceAll("/upload", "");
+		if(uri.contains("v1")){
+			return uri.replaceAll("/file/v1/", "").replaceAll("/upload", "");
+		}else{
+			return uri.replaceAll("/file/v2/", "").replaceAll("/upload", "");
+		}
 	}
 }

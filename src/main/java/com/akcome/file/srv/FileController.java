@@ -100,7 +100,7 @@ public class FileController extends AbstractWebController {
 		// 通过注解获取refName时无法获取后缀
 		String servletPath = request.getServletPath();
 		FileInfo fileInfo = FileClientUtil.parseFilePathV1(servletPath);
-		downloadFileV1Internal(response, group, fileName, fileInfo.getFileName());
+		downloadFileV1Internal(response, group, fileName, fileInfo.getOrgFileName());
 	}
 
 	private void downloadFileV1Internal(HttpServletResponse response, String group, String fileName, String refName)

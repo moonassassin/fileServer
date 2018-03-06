@@ -185,7 +185,7 @@ public class FileService extends AbstractFileService {
 	}
 
 	public void deleteFile(FileInfo fileInfo) throws SystemException {
-		if (fileInfo == null || StringUtils.isEmpty(fileInfo.getOrgFileName())) {
+		if (fileInfo == null || StringUtils.isEmpty(fileInfo.getFileName())) {
 			logger.warn("empty fileInfo:{},return", fileInfo);
 			return;
 		}
@@ -199,7 +199,7 @@ public class FileService extends AbstractFileService {
 			File dir = getGroupDir(group, config);
 			if (dir.exists()) {
 				// 当分组文件夹存在时，获取目标文件对象
-				File rFile = new File(dir, fileInfo.getOrgFileName());
+				File rFile = new File(dir, fileInfo.getFileName());
 				if (rFile.exists()) {
 					// 当目标文件存在时，删除文件
 					rFile.delete();
@@ -212,7 +212,7 @@ public class FileService extends AbstractFileService {
 	}
 
 	public void switchFileGroup(FileInfo tmpFileInfo, String targetGroup) throws SystemException {
-		if (tmpFileInfo == null || StringUtils.isEmpty(tmpFileInfo.getOrgFileName()) || StringUtils.isEmpty(targetGroup)) {
+		if (tmpFileInfo == null || StringUtils.isEmpty(tmpFileInfo.getFileName()) || StringUtils.isEmpty(targetGroup)) {
 			logger.warn("empty fileInfo:{} or targetGroup:{},return", tmpFileInfo, targetGroup);
 			return;
 		}
@@ -230,7 +230,7 @@ public class FileService extends AbstractFileService {
 				}
 				File srcDir = getGroupDir(group, config);
 				if (srcDir.exists()) {
-					File srcFile = new File(srcDir, tmpFileInfo.getOrgFileName());
+					File srcFile = new File(srcDir, tmpFileInfo.getFileName());
 					if (srcFile.exists()) {
 						File targetDir = getGroupDir(targetGroup, targetConfig);
 						FileUtils.moveFileToDirectory(srcFile, targetDir, true);
