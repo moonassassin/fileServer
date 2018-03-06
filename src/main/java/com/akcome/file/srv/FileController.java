@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.akcome.common.exception.BusinessException;
 import com.akcome.common.exception.SystemException;
 import com.akcome.common.file.FileClientUtil;
-import com.akcome.common.file.FileInfo;
+import com.akcome.common.request.in.FileInfo;
 import com.akcome.common.web.AbstractWebController;
 import com.akcome.common.web.out.AjaxResult;
 
@@ -100,7 +100,7 @@ public class FileController extends AbstractWebController {
 		// 通过注解获取refName时无法获取后缀
 		String servletPath = request.getServletPath();
 		FileInfo fileInfo = FileClientUtil.parseFilePathV1(servletPath);
-		downloadFileV1Internal(response, group, fileName, fileInfo.getOrgName());
+		downloadFileV1Internal(response, group, fileName, fileInfo.getOrgFileName());
 	}
 
 	private void downloadFileV1Internal(HttpServletResponse response, String group, String fileName, String refName)

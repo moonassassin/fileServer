@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.akcome</groupId>
 	<artifactId>fileWebServer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Akcome File Web Server</name>
@@ -130,7 +130,7 @@
 		<dependency>
 			<groupId>com.akcome</groupId>
 			<artifactId>common-web</artifactId>
-			<version>0.0.5-SNAPSHOT</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	

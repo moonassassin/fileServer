@@ -18,7 +18,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.akcome.common.exception.SystemException;
-import com.akcome.common.file.FileInfo;
+import com.akcome.common.request.in.FileInfo;
 import com.akcome.file.config.FileConfigInfo;
 
 import lombok.Data;
