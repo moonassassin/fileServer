@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: @config.uri@
+      name: @config.name@
+      profile: @config.profile@
