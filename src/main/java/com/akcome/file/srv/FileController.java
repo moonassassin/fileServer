@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -34,6 +35,7 @@ import com.akcome.common.web.AbstractWebController;
 import com.akcome.common.web.out.AjaxResult;
 
 @Controller
+@RefreshScope
 public class FileController extends AbstractWebController {
 	@Autowired
 	private FileService fileSvc;

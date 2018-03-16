@@ -1,6 +1,14 @@
 spring:
   cloud:
     config:
-      uri: @config.uri@
+      discovery:
+        enabled: true
+        serviceId: configServer
+      #uri: @config.uri@
       name: @config.name@
       profile: @config.profile@
+      
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: @service.url@

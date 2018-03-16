@@ -36,14 +36,20 @@ spring:
       min-idle: 0
       max-active: 8
       max-wait: -1
+  # rabbitmq 配置：通过bus调用mq批量通知微服务，刷新配置文件，访问ip:@server.port@/bus/refresh刷新
+  rabbitmq:
+    host: @rabbitmq.host@   # 登录 Rabbitmq 后台管理页面地址为：http://localhost:15672
+    port: @rabbitmq.port@
+    username: @rabbitmq.username@   # 默认账户
+    password: @rabbitmq.password@   # 默认密码
       
 eureka:
   instance:
     instanceId: ${spring.application.name}:${random.int}
     prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: @service.url@
+#  client:
+#    serviceUrl:
+#      defaultZone: @service.url@
 
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 300000
 
