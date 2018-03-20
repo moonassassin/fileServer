@@ -1,5 +1,10 @@
 spring:
   cloud:
+    bus:
+      destination: springCloudBusEnvAndRefresh # rabbitMQ中的Exchange
+      enabled: true # 是否实例化bus的bean，开启功能
+      refresh:
+        enabled: true # 允许刷新配置文件
     config:
       discovery:
         enabled: true
