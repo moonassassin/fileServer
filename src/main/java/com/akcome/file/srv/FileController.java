@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -39,21 +38,14 @@ import com.akcome.common.web.out.AjaxResult;
 public class FileController extends AbstractWebController {
 	@Autowired
 	private FileService fileSvc;
-	@Value("${fs.url}")
-	private String url;
 
 	@RequestMapping(value = "/file/v1/{group}/upload", method = { RequestMethod.POST })
 	@ResponseBody
 	public AjaxResult<String> uploadFile(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String group, @RequestParam(required = false) String schema) throws BusinessException {
+			@PathVariable String group) throws BusinessException {
 		AjaxResult<String> ret = AjaxResult.create(true);
-		// 请求模式默认为HTTP
-		if (schema == null) {
-			schema = "http";
-		}
 		Map<String, String> fileInfo = uploadFile0(request, response, group);
-		ret.setObj(FileClientUtil.constructFilePathV1(group, fileInfo.get("fileUrl"), fileInfo.get("fileName"), schema,
-				url));
+		ret.setObj(FileClientUtil.constructFilePathV1(group, fileInfo.get("fileUrl"), fileInfo.get("fileName")));
 		return ret;
 	}
 
